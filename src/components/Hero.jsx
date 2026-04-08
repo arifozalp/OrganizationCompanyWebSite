@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
       {/* Background Image & Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -14,15 +14,15 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16 md:mt-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight">
-            En Güzel Günlerinizde <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">Yanınızdayız</span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-4 md:mb-6 leading-tight">
+            En Güzel Günlerinizde <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600 block sm:inline mt-2 sm:mt-0">Yanınızdayız</span>
           </h1>
         </motion.div>
 

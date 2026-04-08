@@ -3,9 +3,9 @@ import { MapPin, Phone, Send } from 'lucide-react';
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 bg-black-900 border-t border-white/5">
+    <section id="contact" className="py-16 md:py-24 bg-black-900 border-t border-white/5 w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -13,12 +13,12 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-sm font-sans tracking-[0.2em] text-gold-500 uppercase mb-3">Bize Ulaşın</h2>
-            <h3 className="text-4xl md:text-5xl font-serif text-white">İletişim</h3>
-            <div className="w-24 h-1 bg-gradient-to-r from-gold-600 to-gold-400 mx-auto mt-6 rounded-full"></div>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white">İletişim</h3>
+            <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-gold-600 to-gold-400 mx-auto mt-4 md:mt-6 rounded-full"></div>
           </motion.div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12">
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

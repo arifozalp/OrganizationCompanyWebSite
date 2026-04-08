@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-black-800 relative overflow-hidden">
+    <section id="about" className="py-16 md:py-24 bg-black-800 relative w-full overflow-hidden">
       {/* Decorative bg element */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gold-900/5 blur-3xl -z-10 rounded-full"></div>
       
@@ -41,7 +41,7 @@ const About = () => {
             className="w-full lg:w-1/2"
           >
             <h2 className="text-sm font-sans tracking-[0.2em] text-gold-500 uppercase mb-3">Biz Kimiz?</h2>
-            <h3 className="text-4xl md:text-5xl font-serif text-white mb-8">Nova Event Organizasyon</h3>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-6 md:mb-8">Nova Event Organizasyon</h3>
             
             <div className="space-y-6 text-gray-400 font-light leading-relaxed">
               <p>
