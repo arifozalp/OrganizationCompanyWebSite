@@ -21,7 +21,7 @@ const Contact = () => {
     setStatus('submitting');
 
     // NOT: Aşağıdaki URL'yi kendi yayına aldığınız Google Apps Script URL'si ile değiştirin.
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbytpA5RGhSt1X1_pOZKvhIvuT5cHYCgzpPg1LaF0600-ZDNo5cCA9_k-96mLzDVxFlnKw/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwU7G8RkAehlAxT4G67g5f4mrgkWr6OhktS7vTJulReBwjylWL7f9g7koor0SLytvWI4A/exec";
 
     try {
       // Google Apps Script için en güvenli ve temiz kaçış yolu: no-cors
