@@ -6,8 +6,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-6">
           <div className="text-center md:text-left">
-            <a href="#home" className="text-2xl font-serif font-bold text-white tracking-widest inline-block mb-2">
-              NOVA <span className="text-gold-500">EVENT</span>
+            <a href="#home" className="flex items-center justify-center md:justify-start gap-3 text-2xl font-serif font-bold text-white tracking-widest mb-3">
+              <img src="/novaeventicon.jpg" alt="Nova Event Logo" className="w-12 h-12 rounded-full object-cover border border-gold-500/30 shadow-[0_0_10px_rgba(212,175,55,0.2)]" />
+              <span>NOVA <span className="text-gold-500">EVENT</span></span>
             </a>
             <p className="text-gray-400 text-sm font-light">En güzel günlerinizde yanınızdayız.</p>
           </div>

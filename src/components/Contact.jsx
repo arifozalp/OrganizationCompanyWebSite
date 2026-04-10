@@ -1,7 +1,48 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Send } from 'lucide-react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    service: '',
+    message: ''
+  });
+
+  const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('submitting');
+
+    // NOT: Aşağıdaki URL'yi kendi yayına aldığınız Google Apps Script URL'si ile değiştirin.
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbytpA5RGhSt1X1_pOZKvhIvuT5cHYCgzpPg1LaF0600-ZDNo5cCA9_k-96mLzDVxFlnKw/exec";
+
+    try {
+      // Google Apps Script için en güvenli ve temiz kaçış yolu: no-cors
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(formData)
+      });
+
+      setStatus('success');
+      // Başarılı gönderimden sonra formu temizliyoruz
+      setFormData({ name: '', phone: '', service: '', message: '' });
+
+      // 5 saniye sonra başarı mesajını kaldır
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error("Form gönderim hatası:", error);
+      setStatus('error');
+    }
+  };
+
   return (
     <section id="contact" className="py-16 md:py-24 bg-black-900 border-t border-white/5 w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,20 +115,20 @@ const Contact = () => {
           >
             <div className="glass p-8 rounded-2xl">
               <h4 className="text-2xl font-serif text-white mb-8">Hızlı İletişim Formu</h4>
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Adınız Soyadınız</label>
-                    <input type="text" id="name" className="w-full bg-black-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors" placeholder="Adınız Soyadınız" />
+                    <input type="text" id="name" value={formData.name} onChange={handleChange} required className="w-full bg-black-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors" placeholder="Adınız Soyadınız" />
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-2">Telefon Numaranız</label>
-                    <input type="tel" id="phone" className="w-full bg-black-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors" placeholder="05XX XXX XX XX" />
+                    <input type="tel" id="phone" value={formData.phone} onChange={handleChange} required className="w-full bg-black-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors" placeholder="05XX XXX XX XX" />
                   </div>
                 </div>
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-gray-400 mb-2">İlgilendiğiniz Hizmet</label>
-                  <select id="service" className="w-full bg-black-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors appearance-none">
+                  <select id="service" value={formData.service} onChange={handleChange} required className="w-full bg-black-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors appearance-none">
                     <option value="">Seçiniz</option>
                     <option value="dugun">Düğün</option>
                     <option value="nisan">Nişan / Söz</option>
@@ -98,11 +139,40 @@ const Contact = () => {
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">Mesajınız</label>
-                  <textarea id="message" rows="4" className="w-full bg-black-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors resiz-none" placeholder="Organizasyonunuz hakkında detaylar..."></textarea>
+                  <textarea id="message" value={formData.message} onChange={handleChange} required rows="4" className="w-full bg-black-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors resiz-none" placeholder="Organizasyonunuz hakkında detaylar..."></textarea>
                 </div>
-                <button type="submit" className="w-full bg-gradient-to-r from-gold-600 to-gold-400 hover:from-gold-500 hover:to-gold-300 text-black-900 font-bold py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group">
-                  <span>Gönder</span>
-                  <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+
+                {status === 'success' && (
+                  <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-400 text-center font-medium">
+                    Mesajınız başarıyla alındı!
+                  </motion.div>
+                )}
+
+                {status === 'error' && (
+                  <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-center font-medium">
+                    Bir hata oluştu. Lütfen tekrar deneyin.
+                  </motion.div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="w-full bg-gradient-to-r from-gold-600 to-gold-400 hover:from-gold-500 hover:to-gold-300 text-black-900 font-bold py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {status === 'submitting' ? (
+                    <span className="flex items-center gap-2">
+                      <svg className="animate-spin h-5 w-5 text-black-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Gönderiliyor...
+                    </span>
+                  ) : (
+                    <>
+                      <span>Gönder</span>
+                      <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
                 </button>
               </form>
             </div>

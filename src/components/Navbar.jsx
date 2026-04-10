@@ -30,15 +30,16 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0">
-            <a href="#home" className="text-2xl font-serif font-bold text-white tracking-widest">
-              NOVA <span className="text-gold-500">EVENT</span>
+            <a href="#home" className="flex items-center gap-3 text-2xl font-serif font-bold text-white tracking-widest">
+              <img src="/novaeventicon.jpg" alt="Nova Event Logo" className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border border-gold-500/30 shadow-[0_0_10px_rgba(212,175,55,0.2)]" />
+              <span>NOVA <span className="text-gold-500">EVENT</span></span>
             </a>
           </div>
-          
+
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
+              <a
+                key={link.name}
                 href={link.href}
                 className="text-gray-300 hover:text-gold-500 transition-colors text-sm uppercase tracking-wider font-medium"
               >
@@ -48,7 +49,7 @@ const Navbar = () => {
           </div>
 
           <div className="md:hidden">
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-white hover:text-gold-500 focus:outline-none"
             >
@@ -66,15 +67,15 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden bg-black-900/95 backdrop-blur-md absolute w-full left-0 mt-4 py-4 px-4 shadow-xl border-t border-gold-500/20"
         >
           <div className="flex flex-col space-y-4">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
+              <a
+                key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-gray-300 hover:text-gold-500 transition-colors uppercase tracking-wider text-sm py-2 px-2"
