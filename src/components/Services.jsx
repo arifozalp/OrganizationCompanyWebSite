@@ -2,15 +2,15 @@ import { motion } from 'framer-motion';
 import { Heart, Gem, Gift, Cake, Scissors, PartyPopper, Smile, Sparkles, Star } from 'lucide-react';
 
 const servicesList = [
-  { title: "Düğün", icon: Heart, image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80", desc: "Hayatınızın en anlamlı gününü kusursuz bir masala dönüştürüyoruz." },
-  { title: "Nişan", icon: Gem, image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80", desc: "Sonsuzluğa giden yolda ilk adımlarınızı zarif detaylarla süslüyoruz." },
-  { title: "Söz", icon: Gift, image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80", desc: "En özel merasimlerinizde geleneksel ve modern dokunuşlar." },
-  { title: "Doğum Günü", icon: Cake, image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=80", desc: "Sevdiklerinizle paylaşacağınız neşe dolu, sürprizlerle dolu anlar." },
-  { title: "Açılış", icon: Scissors, image: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80", desc: "Markanızın prestijli başlangıcını görkemli bir şölene çeviriyoruz." },
-  { title: "Balon Süsleme", icon: PartyPopper, image: "https://images.unsplash.com/photo-1530103862676-de889ad4546c?auto=format&fit=crop&w=800&q=80", desc: "Mekanlarınıza renkli, cıvıl cıvıl ve kusursuz bir atmosfer katıyoruz." },
+  { title: "Düğün", icon: Heart, image: "/images/nisan-soz/nisan-4.webp", desc: "Hayatınızın en anlamlı gününü kusursuz bir masala dönüştürüyoruz." },
+  { title: "Nişan", icon: Gem, image: "/images/nisan-soz/nisan-2.webp", desc: "Sonsuzluğa giden yolda ilk adımlarınızı zarif detaylarla süslüyoruz." },
+  { title: "Söz", icon: Gift, image: "/images/nisan-soz/nisan-8.webp", desc: "En özel merasimlerinizde geleneksel ve modern dokunuşlar." },
+  { title: "Doğum Günü", icon: Cake, image: "/images/dogum-gunu/dogum-gunu-1.webp", desc: "Sevdiklerinizle paylaşacağınız neşe dolu, sürprizlerle dolu anlar." },
+  { title: "Açılış", icon: Scissors, image: "/images/nisan-soz/nisan-7.webp", desc: "Markanızın prestijli başlangıcını görkemli bir şölene çeviriyoruz." },
+  { title: "Balon Süsleme", icon: PartyPopper, image: "/images/nisan-soz/nisan-6.webp", desc: "Mekanlarınıza renkli, cıvıl cıvıl ve kusursuz bir atmosfer katıyoruz." },
   { title: "Palyaço", icon: Smile, image: "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?auto=format&fit=crop&w=800&q=80", desc: "Çocukların yüzünü güldürecek enerjik ve eğlenceli etkinlikler." },
-  { title: "Kına", icon: Sparkles, image: "https://images.unsplash.com/photo-1544425515-d49d9703fdd1?auto=format&fit=crop&w=800&q=80", desc: "Geleneklerin coşkuyla harmanlandığı unutulmaz kına geceleri." },
-  { title: "Sünnet", icon: Star, image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80", desc: "Erkekliğe ilk adımda, görkemli ve hatıralardan silinmeyecek bir gün." },
+  { title: "Kına", icon: Sparkles, image: "/images/kina/kina-1.webp", desc: "Geleneklerin coşkuyla harmanlandığı unutulmaz kına geceleri." },
+  { title: "Sünnet", icon: Star, image: "/images/nisan-soz/nisan-9.webp", desc: "Erkekliğe ilk adımda, görkemli ve hatıralardan silinmeyecek bir gün." },
 ];
 
 const containerVariants = {

@@ -17,7 +17,7 @@ const About = () => {
           >
             <div className="aspect-[4/5] rounded-2xl overflow-hidden relative">
               <img 
-                src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                src="/images/nisan-soz/nisan-1.webp" 
                 alt="Nova Event Organizasyon" 
                 className="w-full h-full object-cover"
               />
